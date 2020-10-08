@@ -47,7 +47,7 @@ class PubMedArticle(object):
                 self.__setattr__(field, kwargs.get(field, None))
 
     def _extractPubMedId(self: object, xml_element: TypeVar("Element")) -> str:
-        path = ".//ArticleId[@IdType='pubmed']"
+        path = ".//PubmedData/ArticleIdList/ArticleId[@IdType='pubmed']"
         return getContent(element=xml_element, path=path)
 
     def _extractTitle(self: object, xml_element: TypeVar("Element")) -> str:
@@ -85,7 +85,7 @@ class PubMedArticle(object):
         return getContent(element=xml_element, path=path)
 
     def _extractDoi(self: object, xml_element: TypeVar("Element")) -> str:
-        path = ".//ArticleId[@IdType='doi']"
+        path = ".//PubmedData/ArticleIdList/ArticleId[@IdType='doi']"
         return getContent(element=xml_element, path=path)
 
     def _extractPublicationDate(
